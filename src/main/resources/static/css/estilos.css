@@ -1,0 +1,244 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ece5dd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Pantalla de Login */
+#seccionLogin {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#inputNombre {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+#btnConectar {
+    background-color: #5288c1;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+#btnConectar:hover {
+    background-color: #4171a3;
+}
+
+/* Contenedor principal del Chat (Oculto al inicio) */
+#seccionChat {
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    height: 530px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #e7ebf0; /* El fondo gris/azul clásico de Telegram */
+    margin: 20px auto;
+}
+
+.cabecera {
+    background-color: #5288c1; /* Azul icónico de Telegram */
+    color: white;
+    padding: 16px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Área de los mensajes */
+#chat {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estructura de las Burbujas */
+.burbuja {
+    max-width: 75%;
+    padding: 8px 14px;
+    border-radius: 12px;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+    word-wrap: break-word;
+}
+.autor {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.texto {
+    margin: 0;
+}
+
+/* Mis mensajes (Derecha, Verdes) */
+.mensaje-mio {
+    align-self: flex-end;
+    background-color: #effdde; /* Verde Telegram */
+    color: #000000;
+    border-bottom-right-radius: 4px; /* Esquina Telegram */
+}
+.mensaje-mio .autor {
+    display: none;
+}
+
+/* Mensajes de otros (Izquierda, Blancos) */
+.mensaje-otro {
+    align-self: flex-start;
+    background-color: #ffffff;
+    color: #000000;
+    border-bottom-left-radius: 4px;
+}
+
+.mensaje-otro .autor {
+    color: #3886ca; /* Nombre del contacto en azul Telegram */
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+}
+
+/* Notificaciones del sistema (Entradas/Salidas) */
+.alerta-sistema {
+    text-align: center;
+    margin: 8px 0;
+}
+
+.alerta-sistema span {
+    background-color: rgba(74, 96, 122, 0.15);
+    color: #4a607a;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Meta información del mensaje (Hora y Checks) */
+.meta-mensaje {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 0.7rem;
+    color: #6a8251;
+    margin-top: 4px;
+    float: right;
+    margin-left: 8px;
+}
+
+.mensaje-otro .meta-mensaje {
+    color: #a3a3a3;
+}
+
+/* =======================================================================
+   REDISEÑO DE CONTROLES INFERIORES (ESTILO BARRA TELEGRAM)
+   ======================================================================= */
+.controles {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #ffffff;
+    gap: 8px;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* El contenedor que agrupa el botón emoji y la caja de texto */
+.input-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: #f1f5f9;
+    border-radius: 22px;
+    padding: 0 14px;
+}
+
+#inputMensaje {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+/* Botón de la Carita Feliz */
+#btnEmoji {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 4px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+#btnEmoji:hover {
+    opacity: 1;
+}
+
+/* Botón Enviar estilo Texto de Telegram */
+#btnEnviar {
+    background: none;
+    border: none;
+    color: #2481cc;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 6px 10px;
+    transition: color 0.2s;
+}
+
+#btnEnviar:hover {
+    color: #1a66a4;
+}
+
+/* Contenedor flotante de Emojis */
+#emojiPicker {
+    display: none; /* Controlado dinámicamente por JS */
+    position: absolute;
+    bottom: 55px;
+    left: 10px;
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    display: none; /* Se activa con 'grid' desde JavaScript */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+#emojiPicker span {
+    cursor: pointer;
+    transition: transform 0.1s;
+    user-select: none;
+}
+
+#emojiPicker span:hover {
+    transform: scale(1.25);
+}

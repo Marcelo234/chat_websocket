@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <div id="seccionLogin">
+        <h2>Bienvenido al Chat</h2>
+        <input type="text" id="inputNombre" placeholder="Ingresa tu nombre..." autofocus><br>
+        <button id="btnConectar">Entrar a la sala</button>
+    </div>
+
+    <div id="seccionChat" style="display: none;">
+        <div class="cabecera" id="tituloChat">Sala de Chat Grupo 1</div>
+        <div id="chat"></div>
+        <div class="controles">
+            <div class="input-wrapper">
+                <button id="btnEmoji" type="button">😀</button>
+                <input type="text" id="inputMensaje" placeholder="Escribe un mensaje...">
+                <div id="emojiPicker">
+                    <span>😀</span><span>😂</span><span>🔥</span><span>👍</span><span>❤️</span>
+                    <span>🎉</span><span>🚀</span><span>👀</span><span>💯</span><span>😎</span>
+                </div>
+            </div>
+
+            <button id="btnEnviar">Enviar</button>
+        </div>
+    </div>
+
+    <script src="/js/chat.js"></script>
+</body>
+</html>
