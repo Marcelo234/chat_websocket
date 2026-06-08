@@ -48,6 +48,8 @@ function conectar() {
         document.getElementById('seccionLogin').style.display = 'none';
         document.getElementById('seccionChat').style.display = 'flex';
 
+        document.getElementById('tituloChat').innerText = '🔄 Conectando...';
+
         //Iniciamos conexion STOMP - comunicacion en tiempo real con el servidor
         const socket = new SockJS('/chat-websocket');
         stompClient = Stomp.over(socket); //STOMP es un protocolo de envio y recepcion de mensajes
@@ -59,6 +61,7 @@ function conectar() {
 }
 
 function onConnected() {
+    document.getElementById('tituloChat').innerText = 'Sala de Chat Grupo 1';
     //Nos suscribimos para escuchar a todos
     stompClient.subscribe('/topic/publico', onMensajeRecibido);
 
@@ -74,9 +77,12 @@ function onConnected() {
 }
 
 function onError(error) {
-    chatDiv.innerHTML += `<div class="alerta-sistema"><span>🔴 Error al conectar con el servidor</span></div>`;
+    document.getElementById('tituloChat').innerText = '⚠️ Sin conexión (Reintentando...)';
+
     setTimeout(() => {
-        conectar();
+        const socket = new SockJS('/chat-websocket');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, onConnected, onError);
     }, 5000);
 }
 
